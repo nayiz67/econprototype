@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Fashion Economists</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@400;600;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header class="top">
+  <a class="logo" href="#">Fashion Economists</a>
+  <p class="proto">Prototype store. No real payments or card details.</p>
+  <button id="cartBtn" class="cart-btn">Cart <span id="cartCount">0</span></button>
+</header>
+
+<section class="hero">
+  <h1>Every outfit has a price. Spin for yours.</h1>
+  <p>Fill your cart, then let the wheel decide which five pieces you get to buy.</p>
+</section>
+
+<section class="filters" aria-label="Filters">
+  <div id="catChips" class="chips"></div>
+  <div class="row">
+    <label>Season
+      <select id="season">
+        <option>All</option><option>Spring</option><option>Summer</option><option>Autumn</option><option>Winter</option>
+      </select>
+    </label>
+    <div class="g">Color <div id="swatches" class="swatches"></div></div>
+    <label>Max price: <output id="priceOut">$110</output>
+      <input type="range" id="price" min="10" max="110" step="5" value="110">
+    </label>
+    <label>Sort
+      <select id="sort">
+        <option value="featured">Featured</option>
+        <option value="low">Price, low to high</option>
+        <option value="high">Price, high to low</option>
+      </select>
+    </label>
+    <button id="reset" class="link">Clear filters</button>
+  </div>
+</section>
+
+<main id="shop"></main>
+
+<!-- Item detail -->
+<div id="itemModal" class="modal" hidden>
+  <div class="panel" role="dialog" aria-modal="true" aria-label="Item details">
+    <button class="x" data-close aria-label="Close">&times;</button>
+    <div id="itemBody"></div>
+  </div>
+</div>
+
+<!-- Cart -->
+<aside id="cart" class="drawer" hidden aria-label="Cart">
+  <button class="x" data-close aria-label="Close">&times;</button>
+  <h2>Your cart</h2>
+  <ul id="cartList" class="items"></ul>
+  <p><b>Subtotal: <span id="cartTotal">$0</span></b></p>
+  <button id="checkoutBtn" class="primary">Confirm checkout</button>
+</aside>
+
+<!-- Checkout wheel -->
+<div id="wheelModal" class="modal" hidden>
+  <div class="panel wheel-panel" role="dialog" aria-modal="true" aria-label="Checkout wheel">
+    <button class="x" data-close aria-label="Close">&times;</button>
+    <h2>Spin for your five</h2>
+    <p id="wheelMsg"></p>
+    <p id="wheelNote" class="note"></p>
+    <div id="wheelWrap" class="wheel-wrap">
+      <div class="pointer"></div>
+      <div id="wheel"><canvas id="wheelCv" width="320" height="320"></canvas></div>
+    </div>
+    <button id="spinBtn" class="primary">Spin</button>
+    <ol id="picks" class="picks"></ol>
+    <p id="picksTotal"><b></b></p>
+    <button id="orderBtn" class="primary" hidden>Place prototype order</button>
+    <p class="note">Demo only. Nothing is charged and no payment details are collected.</p>
+  </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
